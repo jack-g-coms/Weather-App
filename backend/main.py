@@ -26,4 +26,4 @@ def forecast(zipcode):
         raise Exception(f"Forecast request failed with status code: {response.status_code}")
 
 if __name__ == "__main__":
-    APP.run(port=os.getenv("PORT"))
+    serve(APP, host='0.0.0.0')
