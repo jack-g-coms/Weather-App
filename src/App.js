@@ -1,25 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import * as react from 'react';
+import SearchZip from './components/SearchZip';
+import Dashboard from './components/Dashboard';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+import * as mui from '@mui/material';
+
+const darkTheme = createTheme({
+  palette: {
+    mode: "dark"
+  }
+});
+
+const App = () => {
+    const [zipCode, setZipCode] = react.useState();
+
+    return <>
+        <ThemeProvider theme={darkTheme}>
+            <mui.Grid alignItems="center" direction="column" sx={{height: "100%"}} container>
+                {!zipCode 
+                    ? <SearchZip onNewZipCode={setZipCode}/> 
+                    : <Dashboard zipCode={zipCode} setZipCode={setZipCode}/>
+                } 
+            </mui.Grid>
+        </ThemeProvider>
+    </>
 }
 
 export default App;
