@@ -12,7 +12,7 @@ API_BASE = f"http://api.weatherapi.com/v1"
 KEY_BASE = f"?key={os.getenv("API_KEY")}"
 ALLOWED_ORIGINS = [
     "http://localhost:3000",
-    "https://weather-app-ten-jade-12.vercel.app/"
+    "https://weather-app-ten-jade-12.vercel.app"
 ]
 CORS(APP, origins=ALLOWED_ORIGINS)
 
